@@ -6,6 +6,12 @@
 /* global OvenPlayer */
 export default {
   name: 'OvenPlayerComponent',
+  data() {
+    return {
+      isReloading: false,
+      isStreaming: false,
+    };
+  },
   mounted() {
     this.loadOvenPlayerScript().then(() => {
       this.setupPlayer();
@@ -25,8 +31,10 @@ export default {
       const player = OvenPlayer.create('player_id', {
         autoStart: true,
         controls: false,
+        autoFallback: true,
+        mute: true,
         sources: [{
-          label: 'label_for_webrtc',
+          label: 'jp_webrtc',
           type: 'webrtc',
           file: 'ws://127.0.0.1:3333/app/stream'
         }]
@@ -38,13 +46,25 @@ export default {
       });
 
       player.on('play', () => {
-        console.log('Stream started playing');
+        this.isStreaming = true; // Set isStreaming to true when stream starts playing
+        console.log('Stream started playing', this.isStreaming);
       });
 
       player.on('error', () => {
-        console.log('Stream stopped');
-      });
+        this.isStreaming = false; // Set isStreaming to false when stream stops
+        console.log('Stream stopped', this.isReloading);
+        if (!this.isReloading) {
+          this.isReloading = true;
+          setTimeout(() => {
+            this.loadOvenPlayerScript().then(() => {
+              this.setupPlayer();
+              this.isReloading = false; // Reset the flag after reload
+            });
+          }, 1000);
+        }
+  });
     }
   }
 }
 </script>
+

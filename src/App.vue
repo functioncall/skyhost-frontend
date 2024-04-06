@@ -158,7 +158,7 @@ html, body {
 }
 
 .current-time {
-  font-size: 44px;
+  font-size: 42px;
   color: #fff;
   margin-left: 50px;
   font-weight: 100;

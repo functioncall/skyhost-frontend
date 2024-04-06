@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "hls.js": "^1.5.7",
+    "ovenlivekit": "^1.2.0",
+    "ovenplayer": "^0.10.35",
     "vue": "^3.2.13"
   },
   "devDependencies": {

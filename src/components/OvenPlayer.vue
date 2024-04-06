@@ -32,11 +32,18 @@ export default {
         }]
       });
 
-      player.on('ready', () => {
-      if (player.getConfig() && player.getConfig().systemText && player.getConfig().systemText.api && player.getConfig().systemText.api.error) {
-        player.getConfig().systemText.api.error[501] = { message: 'Waiting for live streaming.' };
-      }
-    });
+      player.on('player_state', () => {
+        console.log('Stream is ready');
+        player.play(); 
+      });
+
+      player.on('play', () => {
+        console.log('Stream started playing');
+      });
+
+      player.on('error', () => {
+        console.log('Stream stopped');
+      });
     }
   }
 }

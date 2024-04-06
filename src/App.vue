@@ -50,7 +50,9 @@ export default {
   methods: {
     getCurrentTime() {
       const now = new Date();
-      return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }).replace('PM', 'pm').replace('AM', 'am');
+      const jstTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+      const timeString = jstTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }).replace('PM', 'pm').replace('AM', 'am');
+      return `${timeString} JST`;
     },
     toggleMicrophone() {
       console.log('Toggle microphone button clicked');
@@ -152,6 +154,7 @@ html, body {
   width: 150px;
   word-wrap: break-word;
   text-align: left;
+  opacity: 0.5;
 }
 
 .current-time {

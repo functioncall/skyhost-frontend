@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'CallStatusComponent',
+  name: 'CallStatus',
   data() {
     return {
       startTime: Date.now(),

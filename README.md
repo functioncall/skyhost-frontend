@@ -1,4 +1,4 @@
-# skyhost-frontend
+# Skyhost frontend
 
 ## Project setup
 ```

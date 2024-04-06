@@ -2,10 +2,15 @@
   <div id="app">
     <div class="player-wrapper">
       <div class="header">
-        <h1 class="app-title">Skyhost</h1>
+        <div class="title-container">
+          <h1 class="app-title">Skyhost</h1>
+          <p class="flight-portal">
+            Flight Portal
+          </p>
+        </div>
         <CallStatus class="app-title" />
       </div>
-      <OvenPlayer application="yourApplicationName" stream="yourStreamName" host="wss://your.streaming.server:3333"/>
+      <OvenPlayer />
     </div>
     <div class="footer">
       <h3 class="current-time">{{ currentTime }} | <span class="location">Mt. Takao Hachioji, Japan</span></h3>
@@ -69,6 +74,11 @@ html, body {
   text-align: center;
 }
 
+.title-container {
+  margin-left: 50px;
+  justify-content: center;
+}
+
 .header {
   position: absolute;
   top: 0;
@@ -78,7 +88,19 @@ html, body {
   align-items: center;
   width: 100%;
   overflow: hidden;
-  /* background-color: red; */
+}
+
+.app-title {
+  font-size: 42px;
+  color: #fff;
+  margin-bottom: -20px; /* Reduce the gap */
+}
+
+.flight-portal {
+  font-size: 18px;
+  font-weight: 100;
+  color: #f0f0f0;
+  text-align: left;
 }
 
 .footer {
@@ -97,12 +119,6 @@ html, body {
   position: relative;
   width: 100%; /* Adjust based on your needs */
   /* height: 500px; Adjust based on your needs */
-}
-
-.app-title {
-  font-size: 42px;
-  color: #fff;
-  margin-left: 50px;
 }
 
 .call-status {

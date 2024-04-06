@@ -28,7 +28,7 @@ export default {
         sources: [{
           label: 'label_for_webrtc',
           type: 'webrtc',
-          file: 'ws://10.226.70.219:3333/app/stream'
+          file: 'ws://127.0.0.1:3333/app/stream'
         }]
       });
 
